@@ -34,11 +34,13 @@
 }
 - (id)lyh_jsonStr2ArrOrDict
 {
-    if (self == nil) {
+    // 防止block的野指针错误
+    __weak typeof(self) weakSelf = self;
+    if (weakSelf == nil) {
         return nil;
     }
     
-    NSData *jsonData = [(NSString *)self dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *jsonData = [(NSString *)weakSelf dataUsingEncoding:NSUTF8StringEncoding];
     NSError *err;
     id arrOrDict = [NSJSONSerialization JSONObjectWithData:jsonData
                                                         options:NSJSONReadingMutableContainers

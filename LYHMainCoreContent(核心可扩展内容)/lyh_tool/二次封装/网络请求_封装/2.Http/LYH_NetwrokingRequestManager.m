@@ -30,7 +30,9 @@
         }
     }
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
-        NSLog(@"网络响应 为 %@",response);
+        NSLog(@"网络响应 内部");
+//        NSLog(@"网络响应 为 %@",response);
+//        NSLog(@"网络响应状态码为 %zd",(NSHTTPURLResponse *)response.statusCode);
         if (response == nil) {
             return ;
         }
@@ -54,6 +56,7 @@
     }
     //数组里所有的key=value的字符串通过&符号连接
     NSString *parString = [array componentsJoinedByString:@"&"];
+    NSLog(@"parString %@",parString);
     return [parString dataUsingEncoding:NSUTF8StringEncoding];
 }
 

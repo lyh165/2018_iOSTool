@@ -12,6 +12,8 @@
 {
     NSMutableData *resultData; // 存放请求结果
     void (^finishCallbackBlock)(NSString *); // 执行完成后回调的block
+    void (^finishCallbackBlock1)(id *); // 执行完成后回调的block
+
     
 }
 @property NSMutableData *resultData;
